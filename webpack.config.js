@@ -7,6 +7,8 @@ module.exports = {
     path: "./src/dist",
     filename: "bundle.js"
   },
+  debug: true,
+  devtool: 'eval-source-map',
   module: {
     loaders: [
       {
@@ -16,7 +18,8 @@ module.exports = {
         query: {
           presets: [ 'es2015', 'react' ]
         }
-      }
+      },
+      { test: /(\.css|\.scss)$/, loaders: [ 'style', 'css', 'sass' ] }
     ]
   },
   plugins: [ new HtmlWebpackPlugin({

@@ -1,12 +1,10 @@
+import './renderer'
+import './style/main.scss'
 import ReactDOM from 'react-dom'
 import React from 'react'
 
-class Start extends React.PureComponent {
-  render () {
-    return (<span>TEST</span>)
-  }
-}
+import Router from './components/Router'
 
-ReactDOM.render(<Start/>, document.getElementById('app'))
+ReactDOM.render(<Router/>, document.getElementById('app'))
 
 

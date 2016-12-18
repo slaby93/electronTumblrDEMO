@@ -1,0 +1,7 @@
+.ApplicationWindow {
+  height: 100%;
+  &__ContentWrapper {
+    display: flex;
+    height: 100%;
+  }
+}
