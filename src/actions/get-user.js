@@ -11,5 +11,4 @@ export default function getUserAction (userName) {
         dispatch(endGetUserError(error))
       })
   }
-
 }

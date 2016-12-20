@@ -14,7 +14,7 @@ class Main extends React.PureComponent {
       <Provider store={store}>
         <Router history={history}>
           <Route path='/' component={ApplicationWindow}>
-            <IndexRoute component={BasicContainer}/>
+            <IndexRoute component={BasicContainer} />
           </Route>
         </Router>
       </Provider>

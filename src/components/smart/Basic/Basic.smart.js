@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { TextInput, Button } from 'react-desktop/macOs';
+import { TextInput, Button } from 'react-desktop/macOs'
 import getUserAction from './../../../actions/get-user'
 
 import bemClassName from 'bem-classname'
@@ -28,9 +28,9 @@ class BasicContainer extends React.PureComponent {
     return (
       <div className={this.className()}>
         BasicContainer
-        <TextInput onChange={this.onUserNameChange.bind(this)}/>
+        <TextInput onChange={this.onUserNameChange.bind(this)} />
         <Button onClick={this.requestForUser.bind(this)}>Request</Button>
-        {/*<textarea>Result...</textarea>*/}
+        {/* <textarea>Result...</textarea> */}
       </div>
     )
   }
