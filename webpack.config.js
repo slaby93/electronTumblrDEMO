@@ -1,5 +1,6 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-
+const webpack = require('webpack')
+const path = require('path')
 module.exports = {
   entry: './src/index.js',
   output: {
@@ -7,6 +8,7 @@ module.exports = {
     filename: 'bundle.js'
   },
   debug: true,
+  target: 'electron-renderer',
   devtool: 'eval-source-map',
   module: {
     loaders: [
@@ -23,5 +25,7 @@ module.exports = {
   },
   plugins: [ new HtmlWebpackPlugin({
     template: './src/index.html'
+  }), new webpack.DefinePlugin({
+    NODE_PATH: path.join(__dirname, './node_modules')
   }) ]
 }
