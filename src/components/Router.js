@@ -11,10 +11,10 @@ class Main extends React.PureComponent {
     return (
       <Provider store={store}>
         <Router history={history}>
-          <Route path="/" component={ApplicationWindow}/>
+          <Route path='/' component={ApplicationWindow} />
         </Router>
       </Provider>
     )
   }
 }
-export default Main;
+export default Main

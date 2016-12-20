@@ -5,6 +5,5 @@ import React from 'react'
 
 import Router from './components/Router'
 
-ReactDOM.render(<Router/>, document.getElementById('app'))
-
+ReactDOM.render(<Router />, document.getElementById('app'))
 

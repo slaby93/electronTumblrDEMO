@@ -1,6 +1,6 @@
-import { createStore, applyMiddleware, combineReducers } from 'redux';
-import { composeWithDevTools } from 'remote-redux-devtools';
-import thunk from 'redux-thunk';
+import { createStore, applyMiddleware, combineReducers } from 'redux'
+import { composeWithDevTools } from 'remote-redux-devtools'
+import thunk from 'redux-thunk'
 import { routerReducer } from 'react-router-redux'
 import TumblrReducer from './../ducks/Tumblr'
 

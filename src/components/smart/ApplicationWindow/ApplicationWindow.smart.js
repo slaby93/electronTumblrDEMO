@@ -25,9 +25,9 @@ class ApplicationWindow extends React.PureComponent {
   render () {
     return (
       <div className={this.className()}>
-        <ApplicationTopBar/>
+        <ApplicationTopBar />
         <div className={this.className('ContentWrapper')}>
-          <SideBarContainer/>
+          <SideBarContainer />
           <div>
             <Text>Test</Text>
             {this.props.children || ''}
@@ -46,4 +46,4 @@ function mapDispatchToProps (dispatch) {
   }
 }
 
-export  default connect(mapStateToProps, mapDispatchToProps)(ApplicationWindow)
+export default connect(mapStateToProps, mapDispatchToProps)(ApplicationWindow)

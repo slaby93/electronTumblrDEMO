@@ -1,11 +1,10 @@
-const webpack = require('webpack')
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
-  entry: "./src/index.js",
+  entry: './src/index.js',
   output: {
-    path: "./src/dist",
-    filename: "bundle.js"
+    path: './src/dist',
+    filename: 'bundle.js'
   },
   debug: true,
   devtool: 'eval-source-map',
