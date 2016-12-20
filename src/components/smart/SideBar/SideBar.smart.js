@@ -2,26 +2,19 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import bemClassName from 'bem-classname';
-// ACTION
-import { testStart, testEND } from  './../../../ducks/TestDuck'
-// STYLES
-import './SideBar.scss'
+// COMPONENTS
+import SideBar from './../../dumb/Navigation/SideBar/SideBar.dumb'
 
-class SideBar extends React.PureComponent {
-  constructor (props) {
-    super(props)
-    this.className = bemClassName.bind(null, 'SideBar')
-
-    this.props.dispatch(testStart())
-    setTimeout(() => {
-      this.props.dispatch(testEND())
-    }, 3000)
+class SideBarContainer extends React.PureComponent {
+  constructor () {
+    super()
+    this.className = bemClassName.bind(null, 'SideBarContainer')
   }
 
   render () {
     return (
       <div className={this.className()}>
-        <span>SideBar</span>
+        <SideBar/>
       </div>
     )
   }
@@ -34,4 +27,4 @@ function mapDispatchToProps (dispatch) {
     dispatch
   }
 }
-export default connect(mapStateToProps, mapDispatchToProps)(SideBar);
+export default connect(mapStateToProps, mapDispatchToProps)(SideBarContainer);

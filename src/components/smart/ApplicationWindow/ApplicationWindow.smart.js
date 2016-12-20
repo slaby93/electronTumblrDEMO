@@ -1,12 +1,15 @@
 // LIBS
 import React from 'react'
-import { Text } from 'react-desktop/macOs';
+import { connect } from 'react-redux'
+import { Text } from 'react-desktop/macOs'
 import bemClassName from 'bem-classname'
 // COMPONENTS
 import ApplicationTopBar from './../ApplicationTopBar/ApplicationTopBar.smart'
-import SideBar from './../SideBar/SideBar.smart'
+import SideBarContainer from './../SideBar/SideBar.smart'
 // STYLES
 import './ApplicationWindow.scss'
+// LOGIC
+// import {} from './'
 
 class ApplicationWindow extends React.PureComponent {
 
@@ -15,12 +18,16 @@ class ApplicationWindow extends React.PureComponent {
     this.className = bemClassName.bind(null, 'ApplicationWindow')
   }
 
+  componentDidMount () {
+
+  }
+
   render () {
     return (
       <div className={this.className()}>
         <ApplicationTopBar/>
         <div className={this.className('ContentWrapper')}>
-          <SideBar/>
+          <SideBarContainer/>
           <div>
             <Text>Test</Text>
             {this.props.children || ''}
@@ -30,4 +37,13 @@ class ApplicationWindow extends React.PureComponent {
     )
   }
 }
-export  default ApplicationWindow
+function mapStateToProps (state) {
+  return {}
+}
+function mapDispatchToProps (dispatch) {
+  return {
+    dispatch
+  }
+}
+
+export  default connect(mapStateToProps, mapDispatchToProps)(ApplicationWindow)

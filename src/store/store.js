@@ -1,18 +1,18 @@
 import { createStore, applyMiddleware, combineReducers } from 'redux';
-import devToolsEnhancer from 'remote-redux-devtools';
+import { composeWithDevTools } from 'remote-redux-devtools';
+import thunk from 'redux-thunk';
 import { routerReducer } from 'react-router-redux'
-import TestDuck from './../ducks/TestDuck'
-const reducers = []
+import TumblrReducer from './../ducks/Tumblr'
 
-reducers.push((state, action) => {
-  console.log('ACTION', action)
-  return Object.assign({}, state)
-})
-reducers.push(TestDuck)
-
-const store = createStore(combineReducers({
-  reducers,
+const reducers = combineReducers({
+  'tumblr': TumblrReducer,
   routing: routerReducer
-}), devToolsEnhancer({ realtime: true }))
+})
+const store = createStore(
+  reducers,
+  composeWithDevTools({ realtime: true })(applyMiddleware(thunk))
+)
+
+// }), devToolsEnhancer({ realtime: true }))
 
 export default store
