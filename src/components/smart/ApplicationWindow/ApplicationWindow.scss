@@ -1,9 +1,12 @@
 .ApplicationWindow {
   height: 100%;
   &__ContentWrapper {
-    background-color: #131313;
+    background-color: #151515;
     color: white;
     display: flex;
     height: 100%;
+  }
+  &__BodyWrapper {
+    flex-grow: 1;
   }
 }
