@@ -12,15 +12,21 @@ class SideBarContainer extends React.PureComponent {
   }
 
   render () {
+
     return (
       <div className={this.className()}>
-        <SideBar />
+        <SideBar
+          items={this.props.items}
+        />
       </div>
     )
   }
 }
 function mapStateToProps (state) {
-  return {}
+  console.log('MAP STATE TO PROPS',state)
+  return {
+
+  }
 }
 function mapDispatchToProps (dispatch) {
   return {

@@ -8,8 +8,10 @@ class SideBar extends React.PureComponent {
   }
 
   render () {
+    console.log('PROPS',this.props)
     return (
-      <div className={this.className()} />
+      <div className={this.className()}>
+      </div>
     )
   }
 }
