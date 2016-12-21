@@ -12,7 +12,7 @@ export default function getUser (user, limit = 20, offset = 0) {
     xhr.addEventListener('abort', (...args) => {
       reject(args)
     })
-    xhr.open('GET', `https://api.tumblr.com/v2/blog/${user}/posts/photo?api_key=${CONSUMER_KEY}&limit=${limit}&offset=${offset}`)
+    xhr.open('GET', `https://api.tumblr.com/v2/blog/${user}/posts?api_key=${CONSUMER_KEY}&limit=${limit}&offset=${offset}`)
     xhr.send()
   })
 }

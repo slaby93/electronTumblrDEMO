@@ -29,7 +29,6 @@ class ApplicationWindow extends React.PureComponent {
         <div className={this.className('ContentWrapper')}>
           <SideBarContainer />
           <div className={this.className('BodyWrapper')}>
-            <Text>Test</Text>
             {this.props.children || ''}
           </div>
         </div>
