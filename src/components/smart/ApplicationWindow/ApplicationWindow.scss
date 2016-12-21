@@ -1,6 +1,8 @@
 .ApplicationWindow {
   height: 100%;
   &__ContentWrapper {
+    background-color: #131313;
+    color: white;
     display: flex;
     height: 100%;
   }

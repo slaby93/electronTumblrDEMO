@@ -6,6 +6,7 @@ import store from '../store/store'
 // COMPONENTS
 import ApplicationWindow from './smart/ApplicationWindow/ApplicationWindow.smart'
 import BasicContainer from './smart/Basic/Basic.smart'
+
 const history = syncHistoryWithStore(hashHistory, store, {
   selectLocationState (state) {
     return state.get('routing').toObject();

@@ -23,9 +23,8 @@ class SideBarContainer extends React.PureComponent {
   }
 }
 function mapStateToProps (state) {
-  console.log('MAP STATE TO PROPS',state)
   return {
-
+    items: state.get('sidebar')
   }
 }
 function mapDispatchToProps (dispatch) {

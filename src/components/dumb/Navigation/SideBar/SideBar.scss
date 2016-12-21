@@ -1,7 +1,13 @@
 .SideBar {
-  background-color: #434441;
   flex-basis: 30%;
   min-width: 150px;
   max-width: 350px;
   height: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  overflow: hidden;
+  background: black url(https://cdn.pixabay.com/photo/2016/10/26/23/21/glow-1772961_1280.jpg) center;
+  background-size: cover;
 }

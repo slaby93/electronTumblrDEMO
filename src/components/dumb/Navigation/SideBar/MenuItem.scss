@@ -1,0 +1,13 @@
+.MenuItem {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  color: white;
+  padding: 10px 0;
+  font-family: 'Raleway', sans-serif;
+  background-color: rgba(0,0,0,0.12);
+  cursor: pointer;
+  &:hover {
+    box-shadow: inset 0px 0px 10px 0px rgb(48, 49, 46);
+  }
+}
