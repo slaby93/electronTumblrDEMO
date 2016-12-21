@@ -12,8 +12,10 @@ const reducer = handleActions({
     return state
   },
   [END_GET_USER().type]: function (state, { payload, type, error }) {
-    const user = fromJS(payload.response.blog)
-    return state.set('user', user)
+    const { blog, posts } = payload.response
+    return state
+      .set('user', fromJS(blog))
+      .set('posts', fromJS(posts))
   },
   [END_GET_USER_ERROR().type]: function (state, { payload, type, error }) {
     return state
