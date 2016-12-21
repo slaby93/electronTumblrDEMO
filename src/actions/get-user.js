@@ -1,14 +1,14 @@
-import { getUser, endGetUser, endGetUserError } from './../ducks/Tumblr'
+import { GET_USER, END_GET_USER, END_GET_USER_ERROR } from './../ducks/Tumblr'
 import getUserLogic from './../logic/Tumblr/get_user'
 export default function getUserAction (userName) {
   return function (dispatch, getState) {
-    dispatch(getUser())
+    dispatch(GET_USER())
     getUserLogic(userName)
       .then((userInfo) => {
-        dispatch(endGetUser(userInfo))
+        dispatch(END_GET_USER(userInfo))
       })
       .catch((error) => {
-        dispatch(endGetUserError(error))
+        dispatch(END_GET_USER_ERROR(error))
       })
   }
 }

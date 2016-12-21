@@ -1,37 +1,25 @@
-// ACTIONS
-const GET_USER = 'DEMO/TUMBLR/START_GET_USER'
-const END_GET_USER = 'DEMO/TUMBLR/END_GET_USER'
-const END_GET_USER_ERROR = 'DEMO/TUMBLR/END_GET_USER_ERROR'
+import { createAction, handleActions } from 'redux-actions'
 
+// ACTIONS
+export const GET_USER = createAction('DEMO/TUMBLR/START_GET_USER')
+export const END_GET_USER = createAction('DEMO/TUMBLR/END_GET_USER')
+export const END_GET_USER_ERROR = createAction('DEMO/TUMBLR/END_GET_USER_ERROR')
 // REDUCER
 const defaultState = {}
-function reducer (state = defaultState, action) {
-  if (typeof actionHandler[ action.type ] === 'function') {
-    const newState = actionHandler[ action.type ](state, action)
-    return Object.assign(state, {}, newState)
-  }
-  return state
-}
 
-// ACTION CREATORS
+const reducer = handleActions({
+  [GET_USER().type]: function (state, action) {
+    console.log('ACTION', action)
+    return state
+  },
+  [END_GET_USER().type]: function (state, action) {
+    console.log('ACTION', action)
+    return state
+  },
+  [END_GET_USER_ERROR().type]: function (state, action) {
+    console.log('ACTION', action)
+    return state
+  },
+}, defaultState)
 
-export function getUser () {
-  return { type: GET_USER }
-}
-export function endGetUser (user) {
-  return { type: END_GET_USER, payload: { user } }
-}
-export function endGetUserError () {
-  return { type: END_GET_USER_ERROR }
-}
-
-// ACTION HANDLER
-const actionHandler = {}
-
-actionHandler[ END_GET_USER ] = function (state, action) {
-  const { user } = action.payload
-  return Object.assign(state, {}, {
-    user: user.response.blog
-  })
-}
 export default reducer
