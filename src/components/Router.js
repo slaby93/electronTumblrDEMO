@@ -6,7 +6,11 @@ import store from '../store/store'
 // COMPONENTS
 import ApplicationWindow from './smart/ApplicationWindow/ApplicationWindow.smart'
 import BasicContainer from './smart/Basic/Basic.smart'
-const history = syncHistoryWithStore(hashHistory, store)
+const history = syncHistoryWithStore(hashHistory, store, {
+  selectLocationState (state) {
+    return state.get('routing').toObject();
+  }
+})
 
 class Main extends React.PureComponent {
   render () {
@@ -14,7 +18,7 @@ class Main extends React.PureComponent {
       <Provider store={store}>
         <Router history={history}>
           <Route path='/' component={ApplicationWindow}>
-            <IndexRoute component={BasicContainer} />
+            <IndexRoute component={BasicContainer}/>
           </Route>
         </Router>
       </Provider>
