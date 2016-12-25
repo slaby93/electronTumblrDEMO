@@ -1,6 +1,7 @@
 import React from 'react'
 import { List } from 'immutable'
 import bemClassName from 'bem-classname'
+import { ProgressCircle } from 'react-desktop/macOs'
 // COMPONENTS
 import PostListItem from './PostListItem'
 // STYLES
@@ -27,9 +28,19 @@ class PostList extends React.PureComponent {
 
   render () {
     const itemList = this.createItemsFromData(this.props.items)
+    const showLoader = this.props.showLoader && itemList.length !== 0
     return (
       <div className={this.className()}>
         {itemList}
+        { showLoader &&
+        <div className={this.className('loaderScreen')}>
+          <ProgressCircle
+            size={25}
+            color='white'
+            hidden={!this.props.showLoader}
+          />
+        </div>
+        }
       </div>
     )
   }

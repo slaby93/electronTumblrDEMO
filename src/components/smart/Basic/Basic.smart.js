@@ -32,6 +32,7 @@ class BasicContainer extends React.PureComponent {
         />
         <PostList
           items={this.props.postList}
+          showLoader={this.props.showLoader}
         />
       </div>
     )

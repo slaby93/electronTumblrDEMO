@@ -4,4 +4,15 @@
   display: flex;
   flex-wrap: wrap;
   overflow: auto;
+  &__loaderScreen {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    svg {
+      margin-top: 30%;
+      width: 45px !important;
+      height: 45px !important;
+    }
+  }
 }
