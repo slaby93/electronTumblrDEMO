@@ -9,7 +9,7 @@ import BasicContainer from './smart/Basic/Basic.smart'
 
 const history = syncHistoryWithStore(hashHistory, store, {
   selectLocationState (state) {
-    return state.get('routing').toObject();
+    return state.get('routing').toObject()
   }
 })
 
@@ -19,7 +19,7 @@ class Main extends React.PureComponent {
       <Provider store={store}>
         <Router history={history}>
           <Route path='/' component={ApplicationWindow}>
-            <IndexRoute component={BasicContainer}/>
+            <IndexRoute component={BasicContainer} />
           </Route>
         </Router>
       </Provider>

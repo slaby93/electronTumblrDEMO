@@ -16,7 +16,7 @@ class UserPresentation extends React.PureComponent {
     return (
       <div className={this.className()}>
         <div className={this.className('avatar')}>
-          <img src={userAvatar}/>
+          <img src={userAvatar} />
         </div>
         <span className={this.className('userName')}>{name}</span>
       </div>

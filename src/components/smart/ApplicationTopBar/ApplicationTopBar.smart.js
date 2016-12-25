@@ -18,7 +18,7 @@ class ApplicationTopBar extends React.PureComponent {
         <TitleBar
           title={TITLE}
           controls
-          transparent={true}
+          transparent
         />
       </div>
     )

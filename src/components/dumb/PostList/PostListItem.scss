@@ -1,7 +1,18 @@
 .PostListItem {
-  flex-basis: 50%;
-  border: 5px solid transparent;
+  flex-basis: 100%;
+  border: 5px solid black;
   box-sizing: border-box;
+  background: #171717;
+  min-height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @media (min-width: 600px) {
+    flex-basis: 50%;
+  }
+  @media (min-width: 1000px) {
+    flex-basis: 33%;
+  }
   &__photoPreview {
     width: 100%;
     transition: transform 0.15s linear;

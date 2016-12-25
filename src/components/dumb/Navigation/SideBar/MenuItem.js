@@ -21,4 +21,4 @@ class MenuItem extends React.PureComponent {
   }
 }
 
-export  default MenuItem
+export default MenuItem

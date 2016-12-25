@@ -12,7 +12,6 @@ class SideBarContainer extends React.PureComponent {
   }
 
   render () {
-
     return (
       <div className={this.className()}>
         <SideBar

@@ -19,10 +19,10 @@ class BasicTopBar extends React.PureComponent {
         <SearchBox
           onSubmit={this.props.onSubmit}
           showLoader={this.props.showLoader}
-          buttonText="Search"
+          buttonText='Search'
         />
         <UserPresentation
-          name="daniel"
+          name='daniel'
         />
       </div>
     )

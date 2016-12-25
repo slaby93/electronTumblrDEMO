@@ -24,7 +24,7 @@ const reducer = handleActions({
   [END_GET_USER_ERROR().type]: function (state, { payload, type, error }) {
     return state
       .set('loading', false)
-  },
+  }
 }, defaultState)
 
 export default reducer

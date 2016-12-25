@@ -44,7 +44,7 @@ class SearchBox extends React.PureComponent {
           />
           <ProgressCircle
             size={25}
-            color="white"
+            color='white'
             hidden={!this.props.showLoader}
           />
         </div>
