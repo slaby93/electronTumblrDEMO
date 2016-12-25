@@ -13,6 +13,8 @@ const reducer = handleActions({
   [GET_USER().type]: function (state, { payload, type, error }) {
     return state
       .set('loading', true)
+      .delete('user')
+      .delete('posts')
   },
   [END_GET_USER().type]: function (state, { payload, type, error }) {
     const { blog, posts } = payload.response

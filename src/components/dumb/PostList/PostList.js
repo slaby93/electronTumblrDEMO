@@ -12,7 +12,7 @@ class PostList extends React.PureComponent {
     this.className = bemClassName.bind(null, 'PostList')
   }
 
-  createItemsFromData (itemList = new List([])) {
+  createItemsFromData (itemList) {
     const result = itemList.map((item, index) => {
       return (
         <PostListItem
@@ -34,5 +34,7 @@ class PostList extends React.PureComponent {
     )
   }
 }
-
+PostList.defaultProps = {
+  items: new List([])
+}
 export default PostList
