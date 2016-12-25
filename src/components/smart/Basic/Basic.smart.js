@@ -3,9 +3,8 @@ import React from 'react'
 import { connect } from 'react-redux'
 import bemClassName from 'bem-classname'
 // COMPONENTS
-import SearchBox from './../../dumb/SearchBox/SearchBox'
 import PostList from './../../dumb/PostList/PostList'
-import UserPresentation from './../../dumb/UserPresentation/UserPresentation'
+import BasicTopBar from './../../dumb/BasicTopBar/BasicTopBar'
 // ACTIONS
 import getUserAction from './../../../actions/get-user'
 // STYLES
@@ -27,13 +26,9 @@ class BasicContainer extends React.PureComponent {
   render () {
     return (
       <div className={this.className()}>
-        <SearchBox
+        <BasicTopBar
           onSubmit={this.requestForUser.bind(this)}
           showLoader={this.props.showLoader}
-          buttonText="Search"
-        />
-        <UserPresentation
-          blogInfo={this.props.blogInfo}
         />
         <PostList
           items={this.props.postList}
