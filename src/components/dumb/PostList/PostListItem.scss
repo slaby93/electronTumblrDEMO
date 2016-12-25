@@ -1,6 +1,8 @@
 .PostListItem {
-  border: 1px solid black;
+  flex-basis: 50%;
+  border: 5px solid transparent;
+  box-sizing: border-box;
   &__photoPreview {
-    max-height: 300px;
+    width: 100%;
   }
 }

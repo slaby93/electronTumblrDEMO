@@ -15,22 +15,20 @@ class PostListItem extends React.PureComponent {
   render () {
     const { type, date, photos } = this.props.data.toJS()
     const formattedDate = moment(new Date(date)).format('DD/MM/YYYY')
+
     return (
       <div className={this.className()}>
-        <span>
-          {formattedDate}
-          {
-            type === 'photo'
-              ?
-              <img
-                className={this.className('photoPreview')}
-                src={photos[ 0 ].original_size.url}
-              />
-              : <span>TEXT</span>
-          }
-            </span>
+        {
+          type === 'photo'
+            ?
+            <img
+              className={this.className('photoPreview')}
+              src={photos[ 0 ].original_size.url}
+            />
+            : <span>TEXT</span>
+        }
       </div>
     )
   }
 }
-export  default PostListItem
+export default PostListItem
