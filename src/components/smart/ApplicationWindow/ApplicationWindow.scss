@@ -1,12 +1,19 @@
+@import "./../../../style/variables";
+
 .ApplicationWindow {
   height: 100%;
   &__ContentWrapper {
+    max-height: calc(100vh - #{$window-topbar-height});
+    position: relative;
+    height: 100%;
+    overflow: hidden;
     background-color: #151515;
     color: white;
     display: flex;
-    height: 100%;
   }
   &__BodyWrapper {
+    height: 100%;
+    position: relative;
     flex-grow: 1;
   }
 }

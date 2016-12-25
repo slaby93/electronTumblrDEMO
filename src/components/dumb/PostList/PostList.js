@@ -1,15 +1,19 @@
 import React from 'react'
 import { List } from 'immutable'
+import bemClassName from 'bem-classname'
 // COMPONENTS
 import PostListItem from './PostListItem'
+// STYLES
+import './PostList.scss'
+
 class PostList extends React.PureComponent {
   constructor () {
     super()
+    this.className = bemClassName.bind(null, 'PostList')
   }
 
   createItemsFromData (itemList = new List([])) {
     const result = itemList.map((item, index) => {
-      console.log('item', item.toJS())
       return (
         <PostListItem
           key={index}
@@ -24,7 +28,7 @@ class PostList extends React.PureComponent {
   render () {
     const itemList = this.createItemsFromData(this.props.items)
     return (
-      <div>
+      <div className={this.className()}>
         {itemList}
       </div>
     )

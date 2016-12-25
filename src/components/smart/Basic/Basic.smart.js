@@ -7,6 +7,8 @@ import SearchBox from './../../dumb/SearchBox/SearchBox'
 import PostList from './../../dumb/PostList/PostList'
 // ACTIONS
 import getUserAction from './../../../actions/get-user'
+// STYLES
+import './BasicContainer.scss'
 
 class BasicContainer extends React.PureComponent {
   constructor () {

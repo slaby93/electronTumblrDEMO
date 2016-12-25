@@ -1,0 +1,6 @@
+.PostListItem {
+  border: 1px solid black;
+  &__photoPreview {
+    max-height: 300px;
+  }
+}

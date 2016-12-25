@@ -1,15 +1,34 @@
+// LIBS
 import React from 'react'
+import bemClassName from 'bem-classname'
+import moment from 'moment'
+import { POST_TYPE } from './../../../constants/tumblr.constants'
+// STYLES
+import './PostListItem.scss'
 
 class PostListItem extends React.PureComponent {
+  constructor () {
+    super()
+    this.className = bemClassName.bind(null, 'PostListItem')
+  }
+
   render () {
-    const data = this.props.data
+    const { type, date, photos } = this.props.data.toJS()
+    const formattedDate = moment(new Date(date)).format('DD/MM/YYYY')
     return (
-      <div>
-        {
-          this.props.type === 'text'
-            ? <span>{data.get('summary')}</span>
-            : <img src={data.get('photos').get(0).get('original_size').get('url')}/>
-        }
+      <div className={this.className()}>
+        <span>
+          {formattedDate}
+          {
+            type === 'photo'
+              ?
+              <img
+                className={this.className('photoPreview')}
+                src={photos[ 0 ].original_size.url}
+              />
+              : <span>TEXT</span>
+          }
+            </span>
       </div>
     )
   }
