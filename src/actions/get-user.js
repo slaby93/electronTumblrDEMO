@@ -10,5 +10,6 @@ export default function getUserAction (userName) {
       .catch((error) => {
         dispatch(END_GET_USER_ERROR(error))
       })
+
   }
 }

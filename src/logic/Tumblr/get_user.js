@@ -1,5 +1,5 @@
 import { CONSUMER_KEY } from './../../constants/tumblr.constants'
-export default function getUser (user, limit = 20, offset = 0) {
+export default (user, limit = 20, offset = 0) => {
   return new Promise((resolve, reject) => {
     let xhr = new XMLHttpRequest()
     xhr.addEventListener('load', ({ target }) => {
@@ -16,4 +16,3 @@ export default function getUser (user, limit = 20, offset = 0) {
     xhr.send()
   })
 }
-// https://api.tumblr.com/v2/tagged?tag=gif
