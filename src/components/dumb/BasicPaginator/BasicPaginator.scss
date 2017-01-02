@@ -2,4 +2,23 @@
   height: 30px;
   margin-top: 5px;
   padding: 0 10px;
+  display: flex;
+  &__leftArrow, &__rightArrow {
+    $size: 22px;
+    $basic: #444040;
+    $hover: #827d7d;
+    width: $size;
+    height: $size;
+    margin: 0 5px;
+    svg {
+      fill: $basic;
+      transition: fill .2s linear, transform .2s linear;
+    }
+    &:hover svg {
+      fill: $hover;
+    }
+    &:active svg {
+      transform: scale(1.1);
+    }
+  }
 }

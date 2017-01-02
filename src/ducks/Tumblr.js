@@ -11,7 +11,7 @@ export const END_GET_NEW_PAGE_ERROR = createAction('DEMO/TUMBLR/END_GET_NEW_PAGE
 const defaultState = new Map({
   loading: false,
   offset: 0,
-  total: 0,
+  total: 1,
   limit: 20
 })
 
@@ -28,6 +28,7 @@ const reducer = handleActions({
       .set('user', fromJS(blog))
       .set('posts', fromJS(posts))
       .set('total', total_posts)
+      .set('offset', 0)
       .set('loading', false)
   },
   [END_GET_USER_ERROR().type]: function (state, { payload, type, error }) {
