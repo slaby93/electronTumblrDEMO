@@ -3,6 +3,20 @@
   margin-top: 5px;
   padding: 0 10px;
   display: flex;
+  span {
+    padding: 0 2px;
+  }
+  &__currentPage {
+    font-size: 20px;
+    padding: 0 5px;
+  }
+  &__startGroup, &__leftGroup, &__rightGroup, &__endGroup {
+    cursor: pointer;
+  }
+  &__startGroup--full:after, &__rightGroup--full:after {
+    content: '...';
+    padding: 7px;
+  }
   &__leftArrow, &__rightArrow {
     $size: 22px;
     $basic: #444040;

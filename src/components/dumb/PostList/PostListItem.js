@@ -13,7 +13,6 @@ class PostListItem extends React.PureComponent {
   }
 
   createImageItem ({ photos }) {
-    console.log('CREATE IMAGE', photos)
     return <img
       className={this.className('photoPreview')}
       src={photos[ 0 ].original_size.url}

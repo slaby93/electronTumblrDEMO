@@ -22,23 +22,111 @@ class BasicPaginator extends React.Component {
     } else if (dir === 'prev') {
       this.props.onPageChange(Math.max(offset - limit, 0))
     } else {
-      throw new Error('Not Yet Supported')
+      this.props.onPageChange(limit * (dir - 1))
     }
+  }
+
+  createStartGroup ({ page, numberOfStartGroupElements }) {
+    const result = []
+    if (page === 1) {
+      return result
+    }
+    for (let i = 1; i <= numberOfStartGroupElements; i++) {
+      if (page > i)
+        result.push(
+          <span key={i} onClick={this.onPageChange.bind(this, i)}>
+            {i}
+          </span>
+        )
+    }
+    return result
+  }
+
+  createLeftGroup ({ page, numberOfStartGroupElements, numberOfLeftGroupElements }) {
+    const shouldShowItems = page > numberOfStartGroupElements + 1
+    if (!shouldShowItems) {
+      return []
+    }
+    const result = []
+    for (let i = 1; i <= numberOfLeftGroupElements; i++) {
+      const calcPage = page - i
+      if (calcPage <= numberOfStartGroupElements) {
+        continue
+      }
+      result.push(
+        <span key={calcPage} onClick={this.onPageChange.bind(this, calcPage)}>
+          {calcPage}
+        </span>
+      )
+    }
+    return result.reverse()
+  }
+
+  createRightGroup ({ page, numberOfEndGroupElements, numberOfRightGroupElements, totalPages }) {
+    const result = []
+    const shouldShowItems = page < totalPages - numberOfEndGroupElements
+    if (!shouldShowItems) {
+      return result
+    }
+    for (let i = 1; i <= numberOfRightGroupElements; i++) {
+      const x = page + i
+      if (x > page) {
+        result.push(<span key={x} onClick={this.onPageChange.bind(this, x)}>
+          {x}
+        </span>)
+      }
+    }
+    return result
+  }
+
+  createEndGroup ({ page, numberOfEndGroupElements, totalPages }) {
+    const shouldShowItems = page < totalPages
+    if (!shouldShowItems) {
+      return []
+    }
+    const result = []
+    for (let i = 0; i < numberOfEndGroupElements; i++) {
+      const calcPage = totalPages - i
+      if (page >= calcPage) {continue}
+      result.push(
+        <span key={calcPage} onClick={this.onPageChange.bind(this, calcPage)}>
+          {calcPage}
+        </span>
+      )
+    }
+    return result.reverse()
   }
 
   render () {
     const { offset, limit, total } = this.props
     const page = Math.floor(offset / limit) + 1
     const totalPages = Math.ceil(total / limit)
+
+    const numberOfStartGroupElements = 3
+    const numberOfLeftGroupElements = 3
+    const numberOfRightGroupElements = 3
+    const numberOfEndGroupElements = 3
+
+    const startGroup = this.createStartGroup({ page, numberOfStartGroupElements })
+    const leftGroup = this.createLeftGroup({ page, numberOfStartGroupElements, numberOfLeftGroupElements })
+    const rightGroup = this.createRightGroup({ page, numberOfEndGroupElements, numberOfRightGroupElements, totalPages })
+    const endGroup = this.createEndGroup({ page, numberOfRightGroupElements, numberOfEndGroupElements, totalPages })
     return (
       <div className={this.className()}>
         <Icon nameClass={this.className('leftArrow')} onClick={this.onPageChange.bind(this, 'prev')}
               icon={leftArrowIcon}/>
-        {page}/{totalPages}
+        <div className={this.className('startGroup', {
+          'full': startGroup.length === numberOfStartGroupElements
+        })}>{startGroup}</div>
+        <div className={this.className('leftGroup')}>{leftGroup}</div>
+        <span className={this.className('currentPage')}>{page}</span>
+        <div className={this.className('rightGroup', {
+          'full': rightGroup.length === numberOfRightGroupElements
+        })}>{rightGroup}</div>
+        <div className={this.className('endGroup')}>{endGroup}</div>
+
         <Icon nameClass={this.className('rightArrow')} onClick={this.onPageChange.bind(this, 'next')}
               icon={rightArrowIcon}/>
-
-
       </div>
     )
   }
