@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 
 class Icon extends React.Component {
 
@@ -19,10 +19,8 @@ class Icon extends React.Component {
     const translatedIcon = this.translateIcon(this.props.icon)
     return (
       <div onClick={this.props.onClick} className={this.props.nameClass}
-           dangerouslySetInnerHTML={{ __html: translatedIcon }}>
-
-      </div>
-    );
+        dangerouslySetInnerHTML={{ __html: translatedIcon }} />
+    )
   }
 }
 
@@ -30,4 +28,4 @@ Icon.propTypes = {
   icon: React.PropTypes.string.isRequired
 }
 
-export default Icon;
+export default Icon

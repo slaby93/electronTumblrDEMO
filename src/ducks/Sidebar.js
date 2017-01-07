@@ -1,5 +1,5 @@
-import { createAction, handleActions } from 'redux-actions'
-import { List, Map, fromJS } from 'immutable'
+import { handleActions } from 'redux-actions'
+import { List, Map } from 'immutable'
 const defaultState = new List([
   new Map({
     name: 'Blog',

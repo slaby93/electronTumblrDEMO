@@ -72,7 +72,7 @@ function mapStateToProps (state) {
       .get('total'),
     limit: state
       .get('tumblr')
-      .get('limit'),
+      .get('limit')
   }
 }
 function mapDispatchToProps (dispatch) {

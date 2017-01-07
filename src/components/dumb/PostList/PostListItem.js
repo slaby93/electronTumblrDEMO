@@ -2,7 +2,6 @@
 import React from 'react'
 import bemClassName from 'bem-classname'
 import { Map } from 'immutable'
-import { POST_TYPE } from './../../../constants/tumblr.constants'
 // STYLES
 import './PostListItem.scss'
 

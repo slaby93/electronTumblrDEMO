@@ -1,6 +1,6 @@
 // LIBS
 import React from 'react'
-import { TextInput, Button, ProgressCircle } from 'react-desktop/macOs'
+import { TextInput, ProgressCircle } from 'react-desktop/macOs'
 import { Map } from 'immutable'
 import bemClassName from 'bem-classname'
 // STYLES

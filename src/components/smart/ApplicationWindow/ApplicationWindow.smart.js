@@ -1,7 +1,6 @@
 // LIBS
 import React from 'react'
 import { connect } from 'react-redux'
-import { Text } from 'react-desktop/macOs'
 import bemClassName from 'bem-classname'
 // COMPONENTS
 import ApplicationTopBar from './../ApplicationTopBar/ApplicationTopBar.smart'

@@ -16,7 +16,7 @@ class BasicPaginator extends React.Component {
   }
 
   onPageChange (dir) {
-    const { offset, limit }= this.props
+    const { offset, limit } = this.props
     if (dir === 'next') {
       this.props.onPageChange(offset + limit)
     } else if (dir === 'prev') {
@@ -32,12 +32,13 @@ class BasicPaginator extends React.Component {
       return result
     }
     for (let i = 1; i <= numberOfStartGroupElements; i++) {
-      if (page > i)
+      if (page > i) {
         result.push(
           <span key={i} onClick={this.onPageChange.bind(this, i)}>
             {i}
           </span>
         )
+      }
     }
     return (<div className={this.className('startGroup', {
       'full': result.length === numberOfStartGroupElements && page > numberOfStartGroupElements + numberOfLeftGroupElements + 1
@@ -95,7 +96,7 @@ class BasicPaginator extends React.Component {
     const result = []
     for (let i = 0; i < numberOfEndGroupElements; i++) {
       const calcPage = totalPages - i
-      if (page >= calcPage) {continue}
+      if (page >= calcPage) { continue }
       result.push(
         <span key={calcPage} onClick={this.onPageChange.bind(this, calcPage)}>
           {calcPage}
@@ -122,14 +123,14 @@ class BasicPaginator extends React.Component {
     return (
       <div className={this.className()}>
         <Icon nameClass={this.className('leftArrow')} onClick={this.onPageChange.bind(this, 'prev')}
-              icon={leftArrowIcon}/>
+          icon={leftArrowIcon} />
         {startGroup}
         {leftGroup}
         <span className={this.className('currentPage')}>{page}</span>
         {rightGroup}
         {endGroup}
         <Icon nameClass={this.className('rightArrow')} onClick={this.onPageChange.bind(this, 'next')}
-              icon={rightArrowIcon}/>
+          icon={rightArrowIcon} />
       </div>
     )
   }

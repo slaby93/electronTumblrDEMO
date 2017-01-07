@@ -50,7 +50,7 @@ const reducer = handleActions({
   [END_GET_NEW_PAGE_ERROR().type]: function (state) {
     return state
       .set('loading', false)
-  },
+  }
 }, defaultState)
 
 export default reducer

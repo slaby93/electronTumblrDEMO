@@ -16,7 +16,6 @@ function getNewPageAction (offset) {
       .catch(() => {
         dispatch(END_GET_NEW_PAGE_ERROR())
       })
-
   }
 }
 
