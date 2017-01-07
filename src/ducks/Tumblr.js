@@ -1,6 +1,7 @@
 import { createAction, handleActions } from 'redux-actions'
 import { Map, fromJS } from 'immutable'
 // ACTIONS
+export const RESET_TO_DEFAULT_USER = createAction('DEMO/TUMBLR/RESET_TO_DEFAULT_USER')
 export const GET_USER = createAction('DEMO/TUMBLR/START_GET_USER')
 export const END_GET_USER = createAction('DEMO/TUMBLR/END_GET_USER')
 export const END_GET_USER_ERROR = createAction('DEMO/TUMBLR/END_GET_USER_ERROR')
@@ -50,6 +51,15 @@ const reducer = handleActions({
   [END_GET_NEW_PAGE_ERROR().type]: function (state) {
     return state
       .set('loading', false)
+  },
+  [RESET_TO_DEFAULT_USER().type]: function (state) {
+    return state
+      .set('loading', false)
+      .set('offset', 0)
+      .set('total', 1)
+      .set('limit', 20)
+      .delete('user')
+      .delete('posts')
   }
 }, defaultState)
 

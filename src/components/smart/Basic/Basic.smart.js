@@ -9,6 +9,7 @@ import BasicPaginator from '../../dumb/BasicPaginator/BasicPaginator'
 // ACTIONS
 import getUserAction from './../../../actions/get-user'
 import getNewPageAction from './../../../actions/get-new-page'
+import resetUser from '../../../actions/reset-user'
 
 // STYLES
 import './BasicContainer.scss'
@@ -23,6 +24,10 @@ class BasicContainer extends React.PureComponent {
   }
 
   requestForUser (userName) {
+    if (!userName) {
+      this.props.dispatch(resetUser())
+      return
+    }
     this.props.dispatch(getUserAction(userName))
   }
 
@@ -31,6 +36,7 @@ class BasicContainer extends React.PureComponent {
   }
 
   render () {
+
     return (
       <div className={this.className()}>
         <BasicTopBar
@@ -41,19 +47,18 @@ class BasicContainer extends React.PureComponent {
           items={this.props.postList}
           showLoader={this.props.showLoader}
         />
-        <BasicPaginator
+        {this.props.postList && <BasicPaginator
           offset={this.props.offset}
           limit={this.props.limit}
           total={this.props.total}
           onPageChange={this.onChangePage.bind(this)}
-        />
+        />}
       </div>
     )
   }
 }
 
 function mapStateToProps (state) {
-  console.log(state.get('tumblr').toJS())
   return {
     showLoader: state
       .get('tumblr')
