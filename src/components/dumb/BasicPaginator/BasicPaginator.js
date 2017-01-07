@@ -39,7 +39,11 @@ class BasicPaginator extends React.Component {
           </span>
         )
     }
-    return result
+    return (<div className={this.className('startGroup', {
+      'full': result.length === numberOfStartGroupElements
+    })}>
+      {result}
+    </div>)
   }
 
   createLeftGroup ({ page, numberOfStartGroupElements, numberOfLeftGroupElements }) {
@@ -59,7 +63,7 @@ class BasicPaginator extends React.Component {
         </span>
       )
     }
-    return result.reverse()
+    return (<div className={this.className('leftGroup')}>{result.reverse()}</div>)
   }
 
   createRightGroup ({ page, numberOfEndGroupElements, numberOfRightGroupElements, totalPages }) {
@@ -76,7 +80,11 @@ class BasicPaginator extends React.Component {
         </span>)
       }
     }
-    return result
+    return (<div className={this.className('rightGroup', {
+      'full': result.length === numberOfRightGroupElements
+    })}>
+      {result}
+    </div>)
   }
 
   createEndGroup ({ page, numberOfEndGroupElements, totalPages }) {
@@ -94,7 +102,7 @@ class BasicPaginator extends React.Component {
         </span>
       )
     }
-    return result.reverse()
+    return (<div className={this.className('endGroup')}>{result.reverse()}</div>)
   }
 
   render () {
@@ -115,16 +123,11 @@ class BasicPaginator extends React.Component {
       <div className={this.className()}>
         <Icon nameClass={this.className('leftArrow')} onClick={this.onPageChange.bind(this, 'prev')}
               icon={leftArrowIcon}/>
-        <div className={this.className('startGroup', {
-          'full': startGroup.length === numberOfStartGroupElements
-        })}>{startGroup}</div>
-        <div className={this.className('leftGroup')}>{leftGroup}</div>
+        {startGroup}
+        {leftGroup}
         <span className={this.className('currentPage')}>{page}</span>
-        <div className={this.className('rightGroup', {
-          'full': rightGroup.length === numberOfRightGroupElements
-        })}>{rightGroup}</div>
-        <div className={this.className('endGroup')}>{endGroup}</div>
-
+        {rightGroup}
+        {endGroup}
         <Icon nameClass={this.className('rightArrow')} onClick={this.onPageChange.bind(this, 'next')}
               icon={rightArrowIcon}/>
       </div>

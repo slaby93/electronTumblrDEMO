@@ -3,15 +3,18 @@
   margin-top: 5px;
   padding: 0 10px;
   display: flex;
-  span {
-    padding: 0 2px;
+  color: #ababab;
+  font-family: "Lato", sans-serif;
+  &__startGroup, &__leftGroup, &__rightGroup, &__endGroup {
+    span {
+      padding: 0 2px;
+      cursor: pointer;
+    }
   }
   &__currentPage {
     font-size: 20px;
     padding: 0 5px;
-  }
-  &__startGroup, &__leftGroup, &__rightGroup, &__endGroup {
-    cursor: pointer;
+    color: #e4e4e4;
   }
   &__startGroup--full:after, &__rightGroup--full:after {
     content: '...';
