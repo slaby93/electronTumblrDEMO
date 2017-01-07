@@ -26,7 +26,7 @@ class BasicPaginator extends React.Component {
     }
   }
 
-  createStartGroup ({ page, numberOfStartGroupElements }) {
+  createStartGroup ({ page, numberOfStartGroupElements, numberOfLeftGroupElements }) {
     const result = []
     if (page === 1) {
       return result
@@ -40,7 +40,7 @@ class BasicPaginator extends React.Component {
         )
     }
     return (<div className={this.className('startGroup', {
-      'full': result.length === numberOfStartGroupElements
+      'full': result.length === numberOfStartGroupElements && page > numberOfStartGroupElements + numberOfLeftGroupElements + 1
     })}>
       {result}
     </div>)
@@ -74,7 +74,7 @@ class BasicPaginator extends React.Component {
     }
     for (let i = 1; i <= numberOfRightGroupElements; i++) {
       const x = page + i
-      if (x > page) {
+      if (x > page && x <= totalPages - numberOfEndGroupElements) {
         result.push(<span key={x} onClick={this.onPageChange.bind(this, x)}>
           {x}
         </span>)
@@ -115,7 +115,7 @@ class BasicPaginator extends React.Component {
     const numberOfRightGroupElements = 3
     const numberOfEndGroupElements = 3
 
-    const startGroup = this.createStartGroup({ page, numberOfStartGroupElements })
+    const startGroup = this.createStartGroup({ page, numberOfStartGroupElements, numberOfLeftGroupElements })
     const leftGroup = this.createLeftGroup({ page, numberOfStartGroupElements, numberOfLeftGroupElements })
     const rightGroup = this.createRightGroup({ page, numberOfEndGroupElements, numberOfRightGroupElements, totalPages })
     const endGroup = this.createEndGroup({ page, numberOfRightGroupElements, numberOfEndGroupElements, totalPages })
