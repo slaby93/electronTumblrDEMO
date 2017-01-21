@@ -1,9 +1,12 @@
 .PostList {
   height: 100%;
   width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  overflow: auto;
+
+  .ScrollBar__area div:first-child {
+    display: flex;
+    flex-wrap: wrap;
+    overflow: auto;
+  }
   &__loaderScreen {
     width: 100%;
     height: 100%;
