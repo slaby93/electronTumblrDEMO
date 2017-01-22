@@ -5,18 +5,18 @@ import bemClassName from 'bem-classname'
 import './ModalBox.scss'
 
 class ModalBox extends React.PureComponent {
-    constructor() {
-        super();
-        this.className = bemClassName.bind(null, 'ModalBox');
-    }
+  constructor () {
+    super()
+    this.className = bemClassName.bind(null, 'ModalBox')
+  }
 
-    render() {
-        const {children} = this.props
-        return (
-            <div className={this.className()}>
-                {children}
-            </div>)
-    }
+  render () {
+    const {children} = this.props
+    return (
+      <div className={this.className()}>
+        {children}
+      </div>)
+  }
 }
 export default ModalBox
 

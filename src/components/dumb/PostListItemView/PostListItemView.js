@@ -7,15 +7,18 @@ import ModalHeader from './../Modal/ModalHeader'
 // STYLES
 
 class PostListItemView extends React.PureComponent {
-    render() {
-        return (
-            <Modal>
-                <ModalBox>
-                    <ModalHeader/>
-                </ModalBox>
-            </Modal>
-        )
-    }
+  render () {
+    const {modalVisible, hideModal} = this.props
+    return (
+      <Modal visible={modalVisible}>
+        <ModalBox>
+          <ModalHeader onCloseIconClick={hideModal} />
+        </ModalBox>
+      </Modal>
+    )
+  }
 }
-
+PostListItemView.propTypes = {
+  hideModal: React.PropTypes.func
+}
 export default PostListItemView

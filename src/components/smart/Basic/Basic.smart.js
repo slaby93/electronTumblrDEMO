@@ -10,7 +10,7 @@ import BasicPaginator from '../../dumb/BasicPaginator/BasicPaginator'
 import getUserAction from './../../../actions/get-user'
 import getNewPageAction from './../../../actions/get-new-page'
 import resetUser from '../../../actions/reset-user'
-
+import {SHOW_MODAL, HIDE_MODAL} from './../../../ducks/Modal'
 // STYLES
 import './BasicContainer.scss'
 
@@ -36,22 +36,26 @@ class BasicContainer extends React.PureComponent {
   }
 
   render () {
+    const {postList, showLoader, showModal, hideModal, offset, limit, total, modalVisible} = this.props
     return (
       <div className={this.className()}>
         <BasicTopBar
           onSubmit={this.requestForUser.bind(this)}
-          showLoader={this.props.showLoader}
-                    />
+          showLoader={showLoader}
+                />
         <PostList
-          items={this.props.postList}
-          showLoader={this.props.showLoader}
-                    />
+          items={postList}
+          showLoader={showLoader}
+          modalVisible={modalVisible}
+          showModal={showModal}
+          hideModal={hideModal}
+                />
         {this.props.postList && <BasicPaginator
-          offset={this.props.offset}
-          limit={this.props.limit}
-          total={this.props.total}
+          offset={offset}
+          limit={limit}
+          total={total}
           onPageChange={this.onChangePage.bind(this)}
-                    />}
+                />}
       </div>
     )
   }
@@ -76,11 +80,22 @@ function mapStateToProps (state) {
             .get('total'),
     limit: state
             .get('tumblr')
-            .get('limit')
+            .get('limit'),
+    modalVisible: state
+            .get('modal')
+            .get('visible')
   }
 }
 function mapDispatchToProps (dispatch) {
-  return {dispatch}
+  return {
+    dispatch,
+    showModal: () => {
+      dispatch(SHOW_MODAL())
+    },
+    hideModal: () => {
+      dispatch(HIDE_MODAL())
+    }
+  }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(BasicContainer)

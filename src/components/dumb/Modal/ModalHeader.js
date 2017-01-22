@@ -9,22 +9,29 @@ import closeIcon from '../../../resources/icons/close.svg'
 import './ModalHeader.scss'
 
 class ModalHeader extends React.PureComponent {
-    constructor() {
-        super();
-        this.className = bemClassName.bind(null, 'ModalHeader')
-    }
+  constructor () {
+    super()
+    this.className = bemClassName.bind(null, 'ModalHeader')
+  }
 
-    render() {
-        return (
-            <div className={this.className()}>
-                <Icon nameClass="closeIcon" icon={closeIcon}/>
-            </div>
-        )
-    }
+  onCloseIconClick () {
+    const {onCloseIconClick} = this.props
+    onCloseIconClick && onCloseIconClick()
+  }
+
+  render () {
+    return (
+      <div className={this.className()}>
+        <Icon onClick={this.onCloseIconClick.bind(this)} nameClass='closeIcon' icon={closeIcon} />
+      </div>
+    )
+  }
 }
 
-ModalHeader.propTypes = {}
+ModalHeader.propTypes = {
+  onCloseIconClick: React.PropTypes.func
+}
 
 ModalHeader.defaultProps = {}
 
-export default ModalHeader;
+export default ModalHeader

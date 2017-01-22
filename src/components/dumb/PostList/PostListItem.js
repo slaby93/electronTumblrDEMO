@@ -13,13 +13,14 @@ class PostListItem extends React.PureComponent {
 
   createImageItem ({photos}) {
     return <img
+      onClick={this.props.onClick}
       className={this.className('photoPreview')}
       src={photos[0].original_size.url}
         />
   }
 
   createTextItem ({summary}) {
-    return <span>{summary}</span>
+    return <span onClick={this.props.onClick}>{summary}</span>
   }
 
   onClick () {
@@ -27,19 +28,20 @@ class PostListItem extends React.PureComponent {
   }
 
   render () {
+    const {data} = this.props
     const item = this.props.data.get('type') === 'photo'
-            ? this.createImageItem(this.props.data.toJS())
-            : this.createTextItem(this.props.data.toJS())
+            ? this.createImageItem(data.toJS())
+            : this.createTextItem(data.toJS())
     return (
-      <div
-        onClick={this.onClick.bind(this)}
-        className={this.className()}>
+      <div className={this.className()}>
         {item}
       </div>
     )
   }
 }
-
+PostListItem.propTypes = {
+  onClick: React.PropTypes.func
+}
 PostListItem.defaultProps = {
   data: new Map({})
 }

@@ -16,6 +16,11 @@ class PostList extends React.PureComponent {
     this.className = bemClassName.bind(null, 'PostList')
   }
 
+  onItemClick () {
+    const {showModal} = this.props
+    showModal()
+  }
+
   createItemsFromData (itemList) {
     const result = itemList.map((item, index) => {
       return (
@@ -23,6 +28,7 @@ class PostList extends React.PureComponent {
           key={index}
           data={item}
           type={item.get('type')}
+          onClick={this.onItemClick.bind(this)}
                 />
       )
     })
@@ -30,11 +36,14 @@ class PostList extends React.PureComponent {
   }
 
   render () {
-    const itemList = this.createItemsFromData(this.props.items)
+    const {hideModal, items, modalVisible} = this.props
+    const itemList = this.createItemsFromData(items)
     const showLoader = this.props.showLoader && itemList.length !== 0
     return (
       <div className={this.className()}>
-        <PostListItemView />
+        <PostListItemView
+          hideModal={hideModal}
+          modalVisible={modalVisible} />
         <ScrollBar>
           {itemList}
         </ScrollBar>
