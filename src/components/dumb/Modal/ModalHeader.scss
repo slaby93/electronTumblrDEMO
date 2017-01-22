@@ -1,0 +1,17 @@
+.ModalHeader {
+  $closeIconSize: 15px;
+  display: flex;
+  justify-content: flex-end;
+  align-content: center;
+  background-color: #453392;
+  .closeIcon {
+    padding: 7px;
+    svg {
+      height: $closeIconSize;
+      width: $closeIconSize;
+    }
+    &:active {
+      transform: scale(.9);
+    }
+  }
+}

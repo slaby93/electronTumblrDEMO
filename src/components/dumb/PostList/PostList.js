@@ -6,6 +6,7 @@ import {ProgressCircle} from 'react-desktop/macOs'
 import ScrollBar from './../ScrollBar/ScrollBar'
 // COMPONENTS
 import PostListItem from './PostListItem'
+import PostListItemView from './../PostListItemView/PostListItemView'
 // STYLES
 import './PostList.scss'
 
@@ -33,6 +34,7 @@ class PostList extends React.PureComponent {
     const showLoader = this.props.showLoader && itemList.length !== 0
     return (
       <div className={this.className()}>
+        <PostListItemView />
         <ScrollBar>
           {itemList}
         </ScrollBar>
@@ -41,8 +43,7 @@ class PostList extends React.PureComponent {
           <ProgressCircle
             size={25}
             color='white'
-            hidden={!this.props.showLoader}
-                    />
+            hidden={!this.props.showLoader} />
         </div>
                 }
       </div>
