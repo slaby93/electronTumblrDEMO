@@ -1,7 +1,10 @@
 .BasicContainer {
   height: 100%;
   position: relative;
-  overflow: auto;
   display: flex;
   flex-direction: column;
+  .ScrollBar__area div:first-child {
+    display: flex;
+    flex-direction: column;
+  }
 }

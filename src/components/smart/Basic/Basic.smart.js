@@ -6,7 +6,6 @@ import bemClassName from 'bem-classname'
 import PostList from './../../dumb/PostList/PostList'
 import BasicTopBar from './../../dumb/BasicTopBar/BasicTopBar'
 import BasicPaginator from '../../dumb/BasicPaginator/BasicPaginator'
-import ScrollBar from './../../dumb/ScrollBar/ScrollBar';
 // ACTIONS
 import getUserAction from './../../../actions/get-user'
 import getNewPageAction from './../../../actions/get-new-page'
@@ -16,75 +15,72 @@ import resetUser from '../../../actions/reset-user'
 import './BasicContainer.scss'
 
 class BasicContainer extends React.PureComponent {
-    constructor() {
-        super()
-        this.state = {
-            inputedUserName: ''
-        }
-        this.className = bemClassName.bind(this, 'BasicContainer')
+  constructor () {
+    super()
+    this.state = {
+      inputedUserName: ''
     }
+    this.className = bemClassName.bind(this, 'BasicContainer')
+  }
 
-    requestForUser(userName) {
-        if (!userName) {
-            this.props.dispatch(resetUser())
-            return
-        }
-        this.props.dispatch(getUserAction(userName))
+  requestForUser (userName) {
+    if (!userName) {
+      this.props.dispatch(resetUser())
+      return
     }
+    this.props.dispatch(getUserAction(userName))
+  }
 
-    onChangePage(offset) {
-        this.props.dispatch(getNewPageAction(offset))
-    }
+  onChangePage (offset) {
+    this.props.dispatch(getNewPageAction(offset))
+  }
 
-    render() {
-
-        return (
-            <div className={this.className()}>
-                <ScrollBar>
-                    <BasicTopBar
-                        onSubmit={this.requestForUser.bind(this)}
-                        showLoader={this.props.showLoader}
+  render () {
+    return (
+      <div className={this.className()}>
+        <BasicTopBar
+          onSubmit={this.requestForUser.bind(this)}
+          showLoader={this.props.showLoader}
                     />
-                    <PostList
-                        items={this.props.postList}
-                        showLoader={this.props.showLoader}
+        <PostList
+          items={this.props.postList}
+          showLoader={this.props.showLoader}
                     />
-                    {this.props.postList && <BasicPaginator
-                        offset={this.props.offset}
-                        limit={this.props.limit}
-                        total={this.props.total}
-                        onPageChange={this.onChangePage.bind(this)}
+        {this.props.postList && <BasicPaginator
+          offset={this.props.offset}
+          limit={this.props.limit}
+          total={this.props.total}
+          onPageChange={this.onChangePage.bind(this)}
                     />}
-                </ScrollBar>
-            </div>
-        )
-    }
+      </div>
+    )
+  }
 }
 
-function mapStateToProps(state) {
-    return {
-        showLoader: state
+function mapStateToProps (state) {
+  return {
+    showLoader: state
             .get('tumblr')
             .get('loading'),
-        postList: state
+    postList: state
             .get('tumblr')
             .get('posts'),
-        blogInfo: state
+    blogInfo: state
             .get('tumblr')
             .get('user'),
-        offset: state
+    offset: state
             .get('tumblr')
             .get('offset'),
-        total: state
+    total: state
             .get('tumblr')
             .get('total'),
-        limit: state
+    limit: state
             .get('tumblr')
             .get('limit')
-    }
+  }
 }
-function mapDispatchToProps(dispatch) {
-    return {dispatch}
+function mapDispatchToProps (dispatch) {
+  return {dispatch}
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(BasicContainer)
