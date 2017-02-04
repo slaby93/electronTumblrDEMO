@@ -1,14 +1,17 @@
 .ModalHeader {
   $closeIconSize: 15px;
+  $closeIconColor: #636363;
   display: flex;
   justify-content: flex-end;
   align-content: center;
-  background-color: #453392;
+  background-color: #1f1f21;
   .closeIcon {
     padding: 7px;
+    cursor: pointer;
     svg {
       height: $closeIconSize;
       width: $closeIconSize;
+      fill: $closeIconColor;
     }
     &:active {
       transform: scale(.9);

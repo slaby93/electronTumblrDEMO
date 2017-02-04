@@ -11,91 +11,121 @@ import getUserAction from './../../../actions/get-user'
 import getNewPageAction from './../../../actions/get-new-page'
 import resetUser from '../../../actions/reset-user'
 import {SHOW_MODAL, HIDE_MODAL} from './../../../ducks/Modal'
+import {SET_SELECTED_ITEM, CLEAR_SELECTED_ITEM} from './../../../ducks/Tumblr'
 // STYLES
 import './BasicContainer.scss'
 
 class BasicContainer extends React.PureComponent {
-  constructor () {
-    super()
-    this.state = {
-      inputedUserName: ''
+    constructor() {
+        super()
+        this.state = {
+            inputedUserName: ''
+        }
+        this.className = bemClassName.bind(this, 'BasicContainer')
     }
-    this.className = bemClassName.bind(this, 'BasicContainer')
-  }
 
-  requestForUser (userName) {
-    if (!userName) {
-      this.props.dispatch(resetUser())
-      return
+    requestForUser(userName) {
+        if (!userName) {
+            this.props.dispatch(resetUser())
+            return
+        }
+        this.props.dispatch(getUserAction(userName))
     }
-    this.props.dispatch(getUserAction(userName))
-  }
 
-  onChangePage (offset) {
-    this.props.dispatch(getNewPageAction(offset))
-  }
+    onChangePage(offset) {
+        this.props.dispatch(getNewPageAction(offset))
+    }
 
-  render () {
-    const {postList, showLoader, showModal, hideModal, offset, limit, total, modalVisible} = this.props
-    return (
-      <div className={this.className()}>
-        <BasicTopBar
-          onSubmit={this.requestForUser.bind(this)}
-          showLoader={showLoader}
+    render() {
+        const {
+            postList,
+            selectedItem,
+            setSelectedItem,
+            clearSelectedItem,
+            showLoader,
+            showModal,
+            hideModal,
+            offset,
+            limit,
+            total,
+            modalVisible
+        } = this.props
+        return (
+            <div className={this.className()}>
+                <BasicTopBar
+                    onSubmit={this.requestForUser.bind(this)}
+                    showLoader={showLoader}
                 />
-        <PostList
-          items={postList}
-          showLoader={showLoader}
-          modalVisible={modalVisible}
-          showModal={showModal}
-          hideModal={hideModal}
+                <PostList
+                    items={postList}
+                    showLoader={showLoader}
+                    modalVisible={modalVisible}
+                    showModal={showModal}
+                    hideModal={hideModal}
+                    setSelectedItem={setSelectedItem}
+                    clearSelectedItem={clearSelectedItem}
+                    selectedItem={selectedItem}
                 />
-        {this.props.postList && <BasicPaginator
-          offset={offset}
-          limit={limit}
-          total={total}
-          onPageChange={this.onChangePage.bind(this)}
+                {this.props.postList && <BasicPaginator
+                    offset={offset}
+                    limit={limit}
+                    total={total}
+                    onPageChange={this.onChangePage.bind(this)}
                 />}
-      </div>
-    )
-  }
+            </div>
+        )
+    }
 }
-
-function mapStateToProps (state) {
-  return {
-    showLoader: state
+function getSelectedItemFromState(state) {
+    const posts = state
+        .get('tumblr')
+        .get('posts')
+    if (posts) {
+        return posts.filter(item => item.get('id') === state.get('tumblr').get('selectedItem')).get(0)
+    }
+}
+function mapStateToProps(state) {
+    return {
+        showLoader: state
             .get('tumblr')
             .get('loading'),
-    postList: state
+        postList: state
             .get('tumblr')
             .get('posts'),
-    blogInfo: state
+        blogInfo: state
             .get('tumblr')
             .get('user'),
-    offset: state
+        offset: state
             .get('tumblr')
             .get('offset'),
-    total: state
+        total: state
             .get('tumblr')
             .get('total'),
-    limit: state
+        limit: state
             .get('tumblr')
             .get('limit'),
-    modalVisible: state
+        modalVisible: state
             .get('modal')
-            .get('visible')
-  }
-}
-function mapDispatchToProps (dispatch) {
-  return {
-    dispatch,
-    showModal: () => {
-      dispatch(SHOW_MODAL())
-    },
-    hideModal: () => {
-      dispatch(HIDE_MODAL())
+            .get('visible'),
+        selectedItem: getSelectedItemFromState(state)
     }
-  }
+}
+function mapDispatchToProps(dispatch) {
+    return {
+        dispatch,
+        showModal: () => {
+            dispatch(SHOW_MODAL())
+        },
+        hideModal: () => {
+            dispatch(HIDE_MODAL())
+        },
+        setSelectedItem: (id) => {
+            dispatch(SET_SELECTED_ITEM(id))
+        },
+        clearSelectedItem: () => {
+            dispatch(CLEAR_SELECTED_ITEM())
+        }
+    }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(BasicContainer)

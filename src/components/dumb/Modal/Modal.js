@@ -4,6 +4,7 @@ import bemClassName from 'bem-classname'
 // STYLES
 import './Modal.scss'
 class Modal extends React.PureComponent {
+
   constructor () {
     super()
     this.className = bemClassName.bind(null, 'Modal')

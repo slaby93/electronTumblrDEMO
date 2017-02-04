@@ -1,8 +1,10 @@
-import { CONSUMER_KEY } from './../../constants/tumblr.constants'
+/* global XTMLHttpRequest */
+
+import {CONSUMER_KEY} from './../../constants/tumblr.constants'
 export default (user, limit = 20, offset = 0) => {
   return new Promise((resolve, reject) => {
     let xhr = new XMLHttpRequest()
-    xhr.addEventListener('load', ({ target }) => {
+    xhr.addEventListener('load', ({target}) => {
       const resp = JSON.parse(target.responseText)
       resolve(resp)
     })
