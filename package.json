@@ -5,7 +5,7 @@
   "main": "src/main.js",
   "scripts": {
     "start": "webpack --watch --progress --color",
-    "windows": "webpack && electron .",
+    "windows": "electron-packager . tumblrDemo",
     "test": "echo \"Error: no test specified\" && exit 1",
     "webpack": "webpack-dev-server --hot --inline"
   },
@@ -20,6 +20,9 @@
     "babel-preset-stage-0": "^6.22.0",
     "css-loader": "^0.26.1",
     "electron": "^1.4.12",
+    "electron-packager": "^8.5.1",
+    "electron-prebuilt": "^1.4.13",
+    "electron-winstaller": "^2.5.2",
     "html-loader": "^0.4.4",
     "html-webpack-plugin": "^2.24.1",
     "node-sass": "^4.0.0",
