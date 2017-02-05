@@ -44,7 +44,11 @@ class PostListItemViewModal extends React.PureComponent {
         return (
             <Modal className={this.classname()} visible={modalVisible}>
                 <ModalBox>
-                    <ModalHeader onCloseIconClick={::this.onModalClose}/>
+                    <ModalHeader onCloseIconClick={::this.onModalClose}>
+                        <div className={this.classname('title')}>
+                            <span>{selectedItem && selectedItem.get('source_title')}</span>
+                        </div>
+                    </ModalHeader>
                     <ModalBody>
                         {selectedItem && this.getItemElement(selectedItem)}
                     </ModalBody>

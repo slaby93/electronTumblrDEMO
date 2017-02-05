@@ -8,9 +8,21 @@
     align-items: center;
     height: 100%;
     padding: 20px 0;
+    box-shadow: 1px 0px rgba(0, 0, 0, 0.33);
     &:hover {
       background-color: rgba(0, 0, 0, 0.46);
       transition: all .2s linear;
     }
+  }
+  &__title {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 33px;
+  }
+
+  .ModalHeader {
+    background-color: rgba(33, 33, 33, 0.81);
   }
 }

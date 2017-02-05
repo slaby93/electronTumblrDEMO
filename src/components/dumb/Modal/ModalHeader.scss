@@ -16,5 +16,8 @@
     &:active {
       transform: scale(.9);
     }
+    &:hover {
+      transform: scale(1.1);
+    }
   }
 }

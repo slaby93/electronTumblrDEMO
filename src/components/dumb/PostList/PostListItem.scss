@@ -1,6 +1,6 @@
 .PostListItem {
   flex-basis: 100%;
-  border: 5px solid black;
+  border: 5px solid #1b1b1b;
   box-sizing: border-box;
   background: #171717;
   min-height: 200px;
@@ -20,10 +20,9 @@
     padding: 0 15%;
   }
 
-  *{
+  * {
     cursor: pointer;
   }
-
 
   &__photoPreview {
     width: 100%;

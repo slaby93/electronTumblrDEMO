@@ -22,6 +22,7 @@ class ModalHeader extends React.PureComponent {
   render () {
     return (
       <div className={this.className()}>
+        {this.props.children}
         <Icon onClick={this.onCloseIconClick.bind(this)} nameClass='closeIcon' icon={closeIcon} />
       </div>
     )

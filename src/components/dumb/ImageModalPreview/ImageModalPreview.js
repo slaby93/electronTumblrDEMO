@@ -20,7 +20,7 @@ class ImageModalPreview extends React.PureComponent {
   render () {
     const {data} = this.props
     const imageUrl = `url(${this.getPhoto(data)})`
-
+    console.log('DATA', data.toJS())
     return (
       <div className={this.classname()}>
         <div className={this.classname('imageWrapper')}>
