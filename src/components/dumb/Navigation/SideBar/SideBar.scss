@@ -10,4 +10,10 @@
   overflow: hidden;
   background: black url(https://cdn.pixabay.com/photo/2016/10/26/23/21/glow-1772961_1280.jpg) center;
   background-size: cover;
+  overflow: hidden;
+  &__video {
+    height: 100%;
+    object-fit: inherit;
+    position: absolute;
+  }
 }
