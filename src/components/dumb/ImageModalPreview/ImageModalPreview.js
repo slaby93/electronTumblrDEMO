@@ -1,20 +1,36 @@
 import React from 'react'
 import bemClassName from 'bem-classname'
+import './ImageModalPreview.scss'
 
 class ImageModalPreview extends React.PureComponent {
 
-    constructor() {
-        super()
-        this.classname = bemClassName.bind(null, 'ImageModalPreview')
-    }
+  constructor () {
+    super()
+    this.classname = bemClassName.bind(null, 'ImageModalPreview')
+  }
 
-    render() {
+  getPhoto (data) {
+    return data
+            .get('photos')
+            .get('0')
+            .get('original_size')
+            .get('url')
+  }
 
-        return (
-            <div className={this.classname()}>
-                IMAGE MODAL PREVIEW
-            </div>
-        )
-    }
+  render () {
+    const {data} = this.props
+    const imageUrl = `url(${this.getPhoto(data)})`
+
+    return (
+      <div className={this.classname()}>
+        <div className={this.classname('imageWrapper')}>
+          <div
+            className={this.classname('image')}
+            style={{backgroundImage: imageUrl}} />
+        </div>
+
+      </div>
+    )
+  }
 }
 export default ImageModalPreview

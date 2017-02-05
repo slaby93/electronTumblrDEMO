@@ -1,13 +1,12 @@
-// LIBS
 import React from 'react'
 import bemClassName from 'bem-classname'
-// STYLES
-import './ModalBody.scss'
+import './ModalFooter.scss'
 
-class ModalBody extends React.PureComponent {
+class ModalFooter extends React.PureComponent {
+
   constructor () {
     super()
-    this.classname = bemClassName.bind(null, 'ModalBody')
+    this.classname = bemClassName.bind(null, 'ModalFooter')
   }
 
   render () {
@@ -18,4 +17,4 @@ class ModalBody extends React.PureComponent {
     )
   }
 }
-export default ModalBody
+export default ModalFooter

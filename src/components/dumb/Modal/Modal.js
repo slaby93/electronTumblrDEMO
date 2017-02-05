@@ -11,9 +11,9 @@ class Modal extends React.PureComponent {
   }
 
   render () {
-    const {children, visible} = this.props
+    const {children, visible, className} = this.props
     return (
-            visible && <div className={this.className()}>
+            visible && <div className={`${this.className()} ${className}`}>
                 {children}
             </div>
     )

@@ -1,4 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const WebpackShellPlugin = require('webpack-shell-plugin')
 const webpack = require('webpack')
 const path = require('path')
 
@@ -18,16 +19,22 @@ module.exports = {
         exclude: /(node_modules|bower_components)/,
         loader: 'babel-loader',
         query: {
-          presets: [ 'es2015', 'react' ]
+          presets: ['es2015', 'react']
         }
       },
-      { test: /(\.css|\.scss)$/, loaders: [ 'style', 'css', 'sass' ] },
-      { test: /\.svg/, loader: 'svg-url-loader' }
+            {test: /(\.css|\.scss)$/, loaders: ['style', 'css', 'sass']},
+            {test: /\.svg/, loader: 'svg-url-loader'}
     ]
   },
-  plugins: [ new HtmlWebpackPlugin({
-    template: './src/index.html'
-  }), new webpack.DefinePlugin({
-    NODE_PATH: path.join(__dirname, './node_modules')
-  }) ]
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: './src/index.html'
+    }),
+    new webpack.DefinePlugin({
+      NODE_PATH: path.join(__dirname, './node_modules')
+    }),
+    new WebpackShellPlugin({
+      onBuildEnd: ['electron .']
+    })
+  ]
 }

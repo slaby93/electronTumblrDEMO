@@ -4,7 +4,7 @@
   "description": "",
   "main": "src/main.js",
   "scripts": {
-    "start": "webpack && electron .",
+    "start": "webpack --watch --progress --color",
     "windows": "webpack && electron .",
     "test": "echo \"Error: no test specified\" && exit 1",
     "webpack": "webpack-dev-server --hot --inline"
@@ -28,7 +28,8 @@
     "style-loader": "^0.13.1",
     "svg-url-loader": "^1.1.0",
     "webpack": "^1.14.0",
-    "webpack-dev-server": "^1.16.2"
+    "webpack-dev-server": "^1.16.2",
+    "webpack-shell-plugin": "^0.5.0"
   },
   "dependencies": {
     "bem-classname": "^0.1.1",
