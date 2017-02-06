@@ -1,0 +1,40 @@
+.ApplicationHeader {
+  background-color: #131313;
+  $size: 15px;
+  & > div {
+    display: flex;
+    flex-direction: row;
+    & > div {
+      display: flex;
+      flex-direction: row;
+      margin-left: 8px;
+      justify-content: center;
+    }
+  }
+
+  &__close, &__minimize, &__maximize {
+    width: $size;
+    height: $size;
+    padding: 3px 5px;
+    svg {
+      fill: rgba(107, 107, 107, 0.81);
+      width: 100%;
+      height: 100%;
+    }
+  }
+  &__minimize:hover {
+    svg {
+      fill: #ebf333;
+    }
+  }
+  &__maximize:hover {
+    svg {
+      fill: #6cb352;
+    }
+  }
+  &__close:hover {
+    svg {
+      fill: #980707;
+    }
+  }
+}
