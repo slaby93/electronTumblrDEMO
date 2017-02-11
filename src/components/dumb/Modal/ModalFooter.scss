@@ -3,4 +3,23 @@
   background-color: rgba(49, 49, 49, 0.67);
   display: flex;
   justify-content: flex-start;
+
+  animation: animate-enter-footer;
+  animation-duration: .4s;
+  animation-fill-mode: forwards;
+  animation-delay: .1s;
+  visibility: hidden;
+
+
+
+  @keyframes animate-enter-footer {
+    from {
+      visibility: visible;
+      transform: translate3d(-40vw, 120vh, 0px);
+    }
+    to {
+      visibility: visible;
+      transform: translate3d(0px, 0px, 0px);
+    }
+  }
 }

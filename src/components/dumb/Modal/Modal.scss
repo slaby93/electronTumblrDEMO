@@ -10,4 +10,11 @@
   z-index: 10;
   pointer-events: all;
   align-items: flex-start;
+  animation: open-modal;
+  animation-duration: .5s;
+}
+
+@keyframes open-modal {
+  from {opacity:0;}
+  to {opacity:1;}
 }

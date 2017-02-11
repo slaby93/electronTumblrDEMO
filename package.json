@@ -5,6 +5,7 @@
   "main": "src/main.js",
   "scripts": {
     "start": "webpack --watch --progress --color",
+    "run": "electron .",
     "windows": "electron-packager . tumblrDemo",
     "test": "echo \"Error: no test specified\" && exit 1",
     "webpack": "webpack-dev-server --hot --inline"
