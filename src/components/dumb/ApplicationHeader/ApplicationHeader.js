@@ -5,8 +5,8 @@ import bemClassName from 'bem-classname'
 import Icon from './../Icon/Icon'
 // RESOURCES
 import closeIcon from './../../../resources/icons/close.svg'
-import hideIcon from './../../../resources/icons/hide.svg'
-import expandIcon from './../../../resources/icons/expand.svg'
+import hideIcon from './../../../resources/icons/minimize.svg'
+import expandIcon from './../../../resources/icons/maximize-interface-symbol-of-rectangular-shapes.svg'
 // STYLES
 import './ApplicationHeader.scss'
 

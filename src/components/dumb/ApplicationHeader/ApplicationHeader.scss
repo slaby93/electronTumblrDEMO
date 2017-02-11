@@ -1,6 +1,9 @@
 .ApplicationHeader {
   background-color: #131313;
   $size: 15px;
+  * {
+    -webkit-app-region: drag;
+  }
   & > div {
     display: flex;
     flex-direction: row;
@@ -20,11 +23,12 @@
       fill: rgba(107, 107, 107, 0.81);
       width: 100%;
       height: 100%;
+      -webkit-app-region: no-drag;
     }
   }
   &__minimize:hover {
     svg {
-      fill: #ebf333;
+      fill: #fffe7c;
     }
   }
   &__maximize:hover {
@@ -34,7 +38,7 @@
   }
   &__close:hover {
     svg {
-      fill: #980707;
+      fill: #e83c3c;
     }
   }
 }
