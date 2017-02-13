@@ -15,7 +15,12 @@
   @media (min-width: 1000px) {
     flex-basis: 33%;
   }
-
+  @media (min-width: 1366px) {
+    flex-basis: 25%;
+  }
+  @media (min-width: 1600px) {
+    flex-basis: 20%;
+  }
   span {
     padding: 0 15%;
   }

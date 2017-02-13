@@ -23,10 +23,6 @@ class PostListItem extends React.PureComponent {
     return <span onClick={this.props.onClick}>{summary}</span>
   }
 
-  onClick () {
-    console.log('CLICK')
-  }
-
   render () {
     const {data} = this.props
     const item = this.props.data.get('type') === 'photo'

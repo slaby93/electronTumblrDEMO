@@ -26,6 +26,7 @@
     "electron-winstaller": "^2.5.2",
     "html-loader": "^0.4.4",
     "html-webpack-plugin": "^2.24.1",
+    "json-loader": "^0.5.4",
     "node-sass": "^4.0.0",
     "redux-devtools": "^3.3.1",
     "remote-redux-devtools": "^0.5.7",
